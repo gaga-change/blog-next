@@ -7,8 +7,9 @@ export default class MyDocument extends Document {
         <Head>
           <meta name='viewport' content='width=device-width, initial-scale=1' />
           <meta charSet='utf-8' />
-          <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
-          <link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css" />
+          <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+          <link rel="stylesheet" href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" />
+          <link rel="stylesheet" href="//cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap-grid.min.css" />
         </Head>
         <body>
           <Main />
