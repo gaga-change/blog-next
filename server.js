@@ -12,9 +12,7 @@ app
     const server = express()
 
     server.use('/api', proxy({
-      target: 'http://blog.api.yanjd.top', pathRewrite: {
-        '^/api': '/'
-      }, changeOrigin: true
+      target: 'https://www.yanjd.top', changeOrigin: true
     }))
 
     server.get('*', (req, res) => {

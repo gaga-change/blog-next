@@ -1,8 +1,9 @@
 import { Layout, List, Avatar, Icon, Typography, Tag } from 'antd'
 import Head from 'next/head';
-import fetch from 'isomorphic-unfetch'
 import Link from 'next/link'
 import './index.scss'
+import { posts } from '../api'
+
 const { Text, Title } = Typography;
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -14,6 +15,9 @@ const IconText = ({ type, text }) => (
 );
 const Index = (props) => (
   <div>
+    <Head>
+      <title>严俊东 &#8211; 严俊东个人博客</title>
+    </Head>
     <Layout>
       <Header>
         <div className="container">
@@ -58,12 +62,10 @@ const Index = (props) => (
 )
 
 Index.getInitialProps = async function ({ req }) {
-  !req && NProgress.start()
-  const res = await fetch((req ? 'http://blog.api.yanjd.top' : '/api') + '/posts?projection=postSmall')
-  const data = await res.json()
-  !req && NProgress.done()
+  let res = await posts()
+  let postsData = res.data.data.list
   return {
-    data: data._embedded.posts
+    data: postsData
   }
 }
 
