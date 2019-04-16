@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node server.js",
     "build": "next build",
-    "serve": "cross-env NODE_ENV=production node server.js"
+    "server": "cross-env NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
