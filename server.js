@@ -15,6 +15,30 @@ app
       target: 'https://www.yanjd.top', changeOrigin: true
     }))
 
+    server.get('/tags/:tag/:page', (req, res) => {
+      return app.render(req, res, '/', { ...req.params })
+    })
+
+    server.get('/tags/:tag', (req, res) => {
+      return app.render(req, res, '/', { ...req.params })
+    })
+
+    server.get('/categories/:categories/:page', (req, res) => {
+      return app.render(req, res, '/', { ...req.params })
+    })
+
+    server.get('/categories/:categories', (req, res) => {
+      return app.render(req, res, '/', { ...req.params })
+    })
+
+    server.get('/archives/:id', (req, res) => {
+      return app.render(req, res, '/', { ...req.params })
+    })
+
+    server.get('/:page', (req, res) => {
+      return app.render(req, res, '/', { page: req.params.page });
+    })
+
     server.get('*', (req, res) => {
       return handle(req, res)
     })

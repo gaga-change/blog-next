@@ -15,12 +15,14 @@ const IconText = ({ type, text }) => (
   </span>
 )
 
-const MyLink = ({ href, ele }) => (
-  <Link href={href}>
-    {ele}
-  </Link>
-)
-
+const MyLink = ({ href, ele }) => {
+  if (href === '/1') href = '/'
+  return (
+    < Link href={href} >
+      {ele}
+    </Link >
+  )
+}
 
 const DEFAULT_PAGE_SIZE = 10
 class Index extends React.Component {
@@ -71,9 +73,9 @@ class Index extends React.Component {
                   itemRender: (page, type, originalElement) => {
                     if ((page === 0 && type === 'prev') || (page === props.pages && type === 'next')) return originalElement
                     if (type == 'page') {
-                      return (<MyLink href={`/?page=${page}`} ele={originalElement} />)
+                      return (<MyLink href={`/${page}`} ele={originalElement} />)
                     }
-                    return (<MyLink href={`/?page=${page}`} ele={originalElement} />)
+                    return (<MyLink href={`/${page}`} ele={originalElement} />)
 
                   },
                   total: props.count,
@@ -135,7 +137,7 @@ class Index extends React.Component {
             </Sider>
           </Layout>
           <Footer className="footer">
-            Copyright © 2019<a href="/" rel="nofollow">严俊东</a> | <a rel="nofollow" target="_blank" href="http://www.miitbeian.gov.cn/">浙ICP备17054210号-2 </a>
+            Copyright © 2019<Link href="/"><a rel="nofollow">严俊东</a></Link> | <a rel="nofollow" target="_blank" href="http://www.miitbeian.gov.cn/">浙ICP备17054210号-2 </a>
           </Footer>
         </Layout>
       </div>
