@@ -35,11 +35,19 @@
             }
           }
 
+          .ant-pagination  a {
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+          }
         }
       }
 
       &>.sider {
-        width: 200px;
+        width: 240px !important;
+        min-width: 240px !important;
+        max-width: 240px !important;
         padding: 16px 0 0 20px;
 
         span.tags {
