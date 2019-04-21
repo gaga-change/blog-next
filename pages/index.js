@@ -1,5 +1,6 @@
 import React from 'react'
 import { Layout, List, Icon, Typography, Card, Affix } from 'antd'
+import { withRouter } from 'next/router'
 import Head from 'next/head';
 import Link from 'next/link'
 import './index.scss'
@@ -15,10 +16,10 @@ const IconText = ({ type, text }) => (
   </span>
 )
 
-const MyLink = ({ href, ele }) => {
-  if (href === '/1') href = '/'
+const MyLink = ({ page, ele, asPath }) => {
+  page === 1 && (page = '')
   return (
-    < Link href={href} >
+    <Link href={`/?page=${page}`} as={`/${page}`}>
       {ele}
     </Link >
   )
@@ -27,8 +28,9 @@ const MyLink = ({ href, ele }) => {
 const DEFAULT_PAGE_SIZE = 10
 class Index extends React.Component {
 
-  static async getInitialProps({ req, query }) {
-    let { page = 1 } = query
+  static async getInitialProps({ req, query, asPath, pathname }) {
+    let { page } = query
+    page = Number(page) || 1
     let res = await Promise.all([posts({ page, pageSize: DEFAULT_PAGE_SIZE }), terms()])
     let postsData = res[0].data.data
     let other = res[1].data.data
@@ -41,6 +43,8 @@ class Index extends React.Component {
       posts: other.posts, // 最新 post
       page: postsData.page, // 当前页面
       pages: postsData.pages, // 总页数
+      asPath,
+      pathname
     }
   }
 
@@ -71,11 +75,12 @@ class Index extends React.Component {
                 dataSource={props.data}
                 pagination={{
                   itemRender: (page, type, originalElement) => {
+
                     if ((page === 0 && type === 'prev') || (page === props.pages && type === 'next')) return originalElement
                     if (type == 'page') {
-                      return (<MyLink href={`/${page}`} ele={originalElement} />)
+                      return (<MyLink page={page} ele={originalElement} asPath={props.asPath} pathname={props.pathname} />)
                     }
-                    return (<MyLink href={`/${page}`} ele={originalElement} />)
+                    return (<MyLink page={page} ele={originalElement} asPath={props.asPath} pathname={props.pathname} />)
 
                   },
                   total: props.count,
@@ -105,7 +110,7 @@ class Index extends React.Component {
                 >
                   {props.categories.map(category => (
                     <div key={category}>
-                      <Link href="/"><a>{category}</a></Link>
+                      <Link href={`/categories/${category}`}><a>{category}</a></Link>
                     </div>
                   ))}
                 </Card>
@@ -145,4 +150,4 @@ class Index extends React.Component {
   }
 }
 
-export default Index
+export default withRouter(Index)
