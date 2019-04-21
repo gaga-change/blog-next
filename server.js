@@ -5,7 +5,7 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 const proxy = require('http-proxy-middleware')
-const apiUrl = process.env.BLOG_API_URL || process.env.BLOG_NEXT_URL || 'https://www.yanjd.top'
+const apiUrl = process.env.BLOG_API_URL  || 'https://www.yanjd.top'
 
 app
   .prepare()

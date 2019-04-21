@@ -29,9 +29,10 @@ const DEFAULT_PAGE_SIZE = 10
 class Index extends React.Component {
 
   static async getInitialProps({ req, query, asPath, pathname }) {
+    let isServer = !!req
     let { page } = query
     page = Number(page) || 1
-    let res = await Promise.all([posts({ page, pageSize: DEFAULT_PAGE_SIZE }), terms()])
+    let res = await Promise.all([posts(isServer, { page, pageSize: DEFAULT_PAGE_SIZE }), terms(isServer)])
     let postsData = res[0].data.data
     let other = res[1].data.data
     return {
