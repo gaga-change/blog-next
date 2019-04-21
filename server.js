@@ -4,15 +4,16 @@ const next = require('next')
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
-var proxy = require('http-proxy-middleware')
+const proxy = require('http-proxy-middleware')
+const apiUrl = process.env.BLOG_API_URL || process.env.BLOG_NEXT_URL || 'https://www.yanjd.top'
 
 app
   .prepare()
   .then(() => {
-    const server = express()
+    const server = express()   
 
     server.use('/api', proxy({
-      target: 'https://www.yanjd.top', changeOrigin: true
+      target: apiUrl, changeOrigin: true
     }))
 
     server.get('/tags/:tag/:page', (req, res) => {

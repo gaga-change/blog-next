@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const host = 'http://localhost:3000'
+const host = process.env.BLOG_NEXT_URL || 'http://localhost:3000'
 const base = host + '/api'
 
 // 获取文章列表

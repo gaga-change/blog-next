@@ -1,44 +1,15 @@
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/zeit/next.js/tree/master/examples/with-ant-design)
+# next.js 博客站点
 
-# Ant Design example
 
-## How to use
+## Docker 镜像
 
-### Using `create-next-app`
+### 环境变量
 
-Execute [`create-next-app`](https://github.com/segmentio/create-next-app) with [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) or [npx](https://github.com/zkat/npx#readme) to bootstrap the example:
+`BLOG_API_URL` 提供api的服务url
+`BLOG_NEXT_URL` 当前服务url
 
-```bash
-npx create-next-app --example with-ant-design with-ant-design-app
-# or
-yarn create next-app --example with-ant-design with-ant-design-app
-```
+* 如果 api 和 next 代理到同一个域名。 
+  则只配置 `BLOG_NEXT_URL` 为总代理域名
 
-### Download manually
-
-Download the example:
-
-```bash
-curl https://codeload.github.com/zeit/next.js/tar.gz/canary | tar -xz --strip=2 next.js-canary/examples/with-ant-design
-cd with-ant-design
-```
-
-Install it and run:
-
-```bash
-npm install
-npm run dev
-# or
-yarn
-yarn dev
-```
-
-Deploy it to the cloud with [now](https://zeit.co/now) ([download](https://zeit.co/download))
-
-```bash
-now
-```
-
-## The idea behind the example
-
-This example shows how to use Next.js along with [Ant Design of React](http://ant.design). This is intended to show the integration of this UI toolkit with the Framework.
+* 如果api 和 next 没有代理到一起，而是域名直接指向到 next
+  则需要配置`BLOG_API_URL`为api的访问地址，`BLOG_NEXT_URL`为当前域名
