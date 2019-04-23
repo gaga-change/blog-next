@@ -37,6 +37,7 @@
             a {
               color: inherit;
 
+              &:hover,
               &.active {
                 color: #1890ff;
               }
@@ -71,6 +72,8 @@
           color: #333;
           text-decoration: none;
 
+
+          &:hover,
           &.active {
             color: #1890ff;
           }
