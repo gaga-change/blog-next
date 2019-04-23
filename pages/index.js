@@ -131,7 +131,9 @@ class Index extends React.Component {
                 >
                   {props.categories.map(category => (
                     <div key={category}>
-                      <Link href={`/?category=${category}`} as={`/categories/${category}`}><a>{category}</a></Link>
+                      <Link href={`/?category=${category}`} as={`/categories/${category}`}>
+                        <a className={props.query.category === category ? 'active' : ''}>{category}</a>
+                      </Link>
                     </div>
                   ))}
                 </Card>
@@ -142,7 +144,9 @@ class Index extends React.Component {
                   >
                     {props.tags.map(tag => (
                       <span key={tag} className="tags">
-                        <Link href={`/?tag=${tag}`} as={`/tags/${tag}`}><a>{tag}</a></Link>
+                        <Link href={`/?tag=${tag}`} as={`/tags/${tag}`}>
+                          <a className={props.query.tag === tag ? 'active' : ''}>{tag}</a>
+                        </Link>
                       </span>
                     ))}
                   </Card>

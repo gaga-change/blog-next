@@ -21,6 +21,10 @@
       h3 {
         line-height: inherit;
       }
+
+      a {
+        text-decoration: none;
+      }
     }
 
     // 列表区域 & 侧边
@@ -63,6 +67,14 @@
           display: inline-block;
         }
 
+        a {
+          color: #333;
+          text-decoration: none;
+
+          &.active {
+            color: #1890ff;
+          }
+        }
       }
     }
 
