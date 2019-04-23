@@ -16,13 +16,21 @@ const IconText = ({ type, text }) => (
   </span>
 )
 
-const MyLink = ({ page, ele, asPath }) => {
+const MyLink = ({ page, ele, query }) => {
   page === 1 && (page = '')
-  return (
-    <Link href={`/?page=${page}`} as={`/${page}`}>
+  if (query.tag) {
+    return <Link href={`/?tag=${query.tag}&page=${page}`} as={`/tags/${query.tag}${!!page ? ('/' + page) : ''}`}>
       {ele}
     </Link >
-  )
+  } else if (query.category) {
+    return <Link href={`/?category=${query.category}&page=${page}`} as={`/categories/${query.category}${!!page ? ('/' + page) : ''}`}>
+      {ele}
+    </Link >
+  } else {
+    return <Link href={`/?page=${page}`} as={`/${page}`}>
+      {ele}
+    </Link >
+  }
 }
 
 const DEFAULT_PAGE_SIZE = 10
@@ -30,9 +38,9 @@ class Index extends React.Component {
 
   static async getInitialProps({ req, query, asPath, pathname }) {
     let isServer = !!req
-    let { page } = query
+    let { page, tag, category } = query
     page = Number(page) || 1
-    let res = await Promise.all([posts(isServer, { page, pageSize: DEFAULT_PAGE_SIZE }), terms(isServer)])
+    let res = await Promise.all([posts(isServer, { page, pageSize: DEFAULT_PAGE_SIZE, tag, category }), terms(isServer)])
     let postsData = res[0].data.data
     let other = res[1].data.data
     return {
@@ -45,7 +53,8 @@ class Index extends React.Component {
       page: postsData.page, // 当前页面
       pages: postsData.pages, // 总页数
       asPath,
-      pathname
+      pathname,
+      query,
     }
   }
 
@@ -63,7 +72,11 @@ class Index extends React.Component {
         <Layout className="layout-total">
           <Header className="header">
             <div className="container">
-              <Title level={3}>严俊东<Text type="secondary" className="title-des"> &#8211; 严俊东个人博客</Text></Title>
+              <Link href="/">
+                <a>
+                  <Title level={3}>严俊东<Text type="secondary" className="title-des"> &#8211; 严俊东个人博客</Text></Title>
+                </a>
+              </Link>
             </div>
           </Header>
           <Layout className="layout-con container">
@@ -79,9 +92,9 @@ class Index extends React.Component {
 
                     if ((page === 0 && type === 'prev') || (page === props.pages && type === 'next')) return originalElement
                     if (type == 'page') {
-                      return (<MyLink page={page} ele={originalElement} asPath={props.asPath} pathname={props.pathname} />)
+                      return (<MyLink page={page} ele={originalElement} pathname={props.pathname} query={props.query} />)
                     }
-                    return (<MyLink page={page} ele={originalElement} asPath={props.asPath} pathname={props.pathname} />)
+                    return (<MyLink page={page} ele={originalElement} pathname={props.pathname} query={props.query} />)
 
                   },
                   total: props.count,
@@ -92,7 +105,14 @@ class Index extends React.Component {
                   <List.Item
                     key={item.title}
                     actions={[<IconText type="read" text="0" />, <IconText type="like-o" text="0" />, <IconText type="message" text="0" />,
-                    <span className="item-tags"><Icon type="tags" />{(<span>{item.tags.join('/')}</span>)}</span>
+                    <span className="item-tags"><Icon type="tags" />{(<span>{item.tags.map((tag, index) => (
+                      <span key={tag}>
+                        {!!index && '/'}
+                        <Link href={`/?tag=${tag}`} as={`/tags/${tag}`}>
+                          <a className={props.query.tag === tag ? 'active' : ''}>{tag}</a>
+                        </Link>
+                      </span>
+                    ))}</span>)}</span>
                     ]}
                     extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
                   >
@@ -111,7 +131,7 @@ class Index extends React.Component {
                 >
                   {props.categories.map(category => (
                     <div key={category}>
-                      <Link href={`/categories/${category}`}><a>{category}</a></Link>
+                      <Link href={`/?category=${category}`} as={`/categories/${category}`}><a>{category}</a></Link>
                     </div>
                   ))}
                 </Card>
@@ -122,7 +142,7 @@ class Index extends React.Component {
                   >
                     {props.tags.map(tag => (
                       <span key={tag} className="tags">
-                        <Link href="/"><a>{tag}</a></Link>
+                        <Link href={`/?tag=${tag}`} as={`/tags/${tag}`}><a>{tag}</a></Link>
                       </span>
                     ))}
                   </Card>

@@ -30,12 +30,20 @@
       &>.content {
         &>.list {
           .item-tags {
+            a {
+              color: inherit;
+
+              &.active {
+                color: #1890ff;
+              }
+            }
+
             &>i {
               margin-right: 8px;
             }
           }
 
-          .ant-pagination  a {
+          .ant-pagination a {
             display: inline-block;
             height: 100%;
             width: 100%;
