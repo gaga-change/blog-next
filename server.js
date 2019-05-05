@@ -33,7 +33,7 @@ app
     })
 
     server.get('/archives/:id', (req, res) => {
-      return app.render(req, res, '/', { ...req.params })
+      return app.render(req, res, '/detail', { ...req.params })
     })
 
     server.get('/page/:page', (req, res) => {

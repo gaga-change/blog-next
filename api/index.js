@@ -17,3 +17,6 @@ export const posts = (isServer, params) => axios.get(_(isServer, '/posts'), { pa
 
 // 标签、分类，附加最近文章
 export const terms = (isServer) => axios.get(_(isServer, '/terms'))
+
+// 文章详情
+export const post = (isServer, id) => axios.get(_(isServer, `/posts/${id}`))

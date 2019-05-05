@@ -119,7 +119,7 @@ class Index extends React.Component {
                       extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
                     >
                       <List.Item.Meta
-                        title={(<Link href="/detail"><a>{item.title}</a></Link>)}
+                        title={(<Link href={`/detail?id=${item.id}`} as={`/archives/${item.id}`}><a>{item.title}</a></Link>)}
                         description={item.intro + '...'}
                       />
                     </List.Item>
@@ -160,7 +160,7 @@ class Index extends React.Component {
                     >
                       {props.posts.map(post => (
                         <div key={post.id}>
-                          <Link href="/"><a>{post.title}</a></Link>
+                          <Link href={`/detail?id=${post.id}`} as={`/archives/${post.id}`}><a>{post.title}</a></Link>
                         </div>
                       ))}
                     </Card>
