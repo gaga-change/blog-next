@@ -65,7 +65,7 @@ class Index extends React.Component {
   render() {
     const { props } = this
     return (
-      <Base><div>
+      <Base><div className="page-index">
         <Head>
           <title>严俊东 &#8211; 严俊东个人博客</title>
         </Head>

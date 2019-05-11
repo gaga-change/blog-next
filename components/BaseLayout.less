@@ -1,0 +1,76 @@
+.BaseLayout {
+  .layout-total {
+    background: #fff;
+
+    .ant-layout-header,
+    .ant-layout-footer,
+    .ant-layout-sider,
+    .ant-layout-content {
+      background: inherit;
+    }
+
+    //  头部区域
+    &>.header {
+      line-height: 64px;
+
+      .title-des {
+        font-size: 14px;
+      }
+
+      h3 {
+        line-height: inherit;
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    // 列表区域 & 侧边
+    &>.layout-con {
+      background: inherit;
+
+      // &>.content {
+
+      // }
+
+      &>.sider {
+        width: 240px !important;
+        min-width: 240px !important;
+        max-width: 240px !important;
+        padding: 16px 0 0 20px;
+
+        span.tags {
+          margin: 5px 5px;
+          display: inline-block;
+        }
+
+        a {
+          color: #333;
+          text-decoration: none;
+
+
+          &:hover,
+          &.active {
+            color: #1890ff;
+          }
+        }
+      }
+    }
+
+    // 页脚
+    &>.footer {
+      line-height: 1.5;
+      text-align: center;
+      color: #bfbfbf;
+
+      a {
+        color: inherit;
+
+        &:hover {
+          color: #1890ff;
+        }
+      }
+    }
+  }
+}

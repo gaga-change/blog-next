@@ -27,7 +27,6 @@ class Detail extends React.Component {
           </Link>
           <div>
             <div dangerouslySetInnerHTML={{ __html: detail.content }}></div>
-
           </div>
         </div>
       </Base>
