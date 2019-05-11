@@ -27,6 +27,10 @@ const MyLink = ({ page, ele, query }) => {
       {ele}
     </Link >
   } else {
+    if (!page) {
+      return <Link href={`/`} as={`/`}>
+        {ele}</Link >
+    }
     return <Link href={`/?page=${page}`} as={`/page/${page}`}>
       {ele}
     </Link >
@@ -77,13 +81,11 @@ class Index extends React.Component {
           dataSource={props.data}
           pagination={{
             itemRender: (page, type, originalElement) => {
-
-              if ((page === 0 && type === 'prev') || (page === props.pages && type === 'next')) return originalElement
+              if ((page === 0 && type === 'prev') || (page === props.page && type === 'next')) return originalElement
               if (type == 'page') {
                 return (<MyLink page={page} ele={originalElement} pathname={props.pathname} query={props.query} />)
               }
               return (<MyLink page={page} ele={originalElement} pathname={props.pathname} query={props.query} />)
-
             },
             total: props.count,
             pageSize: props.pageSize,
