@@ -1,13 +1,20 @@
 import React from 'react'
 import Link from 'next/link'
-import Base from '../components/Base'
-import { post } from '../api'
+import { connect } from 'react-redux'
+import Base from '../components/BaseLayout'
+import { post, terms } from '../api'
+import { setMenu } from '../store'
+import './detail.less'
 
 class Detail extends React.Component {
-  static async getInitialProps({ req, query }) {
+  static async getInitialProps({ req, query, reduxStore }) {
     let isServer = !!req
     let { id } = query
     let res = await post(isServer, id)
+    if (!reduxStore.getState().menu) {
+      let { data } = await terms(isServer)
+      reduxStore.dispatch(setMenu(data.data))
+    }
     return {
       detail: res.data.data
     }
@@ -20,19 +27,15 @@ class Detail extends React.Component {
   render() {
     const { detail } = this.props
     return (
-      <Base>
+      <Base><div className="page-detail">
         <div>
-          <Link href="/">
-            <a>首页</a>
-          </Link>
-          <div>
-            <div dangerouslySetInnerHTML={{ __html: detail.content }}></div>
-          </div>
+          <h1 className="title">{detail.title}</h1>
+          <div className="md-style" dangerouslySetInnerHTML={{ __html: detail.content }}></div>
         </div>
-      </Base>
+      </div></Base>
     )
   }
 
 }
 
-export default Detail
+export default connect()(Detail)
