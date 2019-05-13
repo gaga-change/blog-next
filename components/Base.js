@@ -2,10 +2,9 @@ import React from 'react'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 import Head from 'next/head'
-import '../asserts/styles.less'
+import '../less/styles.less'
 
 // import 'nprogress/nprogress.css'
-// import '../asserts/styles.less'
 // import { LocaleProvider, BackTop } from 'antd';
 import { BackTop } from 'antd';
 // import zh_CN from 'antd/lib/locale-provider/zh_CN';

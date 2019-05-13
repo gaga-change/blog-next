@@ -1,10 +1,8 @@
 import React from 'react'
-import Link from 'next/link'
 import { connect } from 'react-redux'
 import Base from '../components/BaseLayout'
 import { post, terms } from '../api'
 import { setMenu } from '../store'
-import './detail.less'
 
 class Detail extends React.Component {
   static async getInitialProps({ req, query, reduxStore }) {
