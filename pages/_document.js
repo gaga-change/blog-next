@@ -9,6 +9,7 @@ export default class MyDocument extends Document {
           <meta charSet='utf-8' />
           <link rel="shortcut icon" href="/static/favicon.ico" />
           <link rel="stylesheet" href="//cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap-grid.min.css" />
+          <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet"></link>
         </Head>
         <body>
           <Main />
