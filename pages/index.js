@@ -6,7 +6,6 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { setMenu } from '../store'
 import Base from '../components/BaseLayout'
-import './index.less'
 import { posts, terms } from '../api'
 
 const IconText = ({ type, text }) => (

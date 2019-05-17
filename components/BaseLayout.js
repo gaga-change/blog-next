@@ -3,7 +3,6 @@ import { Layout } from 'antd'
 import LayoutHeader from './LayoutHeader'
 import LayoutRight from './LayoutRight'
 import LayoutFooter from './LayoutFooter'
-import './BaseLayout.less'
 
 const { Header, Footer, Sider, Content } = Layout
 
