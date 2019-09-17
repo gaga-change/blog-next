@@ -24,11 +24,11 @@ app
       return app.render(req, res, '/', { ...req.params })
     })
 
-    server.get('/categories/:categories/:page', (req, res) => {
+    server.get('/categories/:category/:page', (req, res) => {
       return app.render(req, res, '/', { ...req.params })
     })
 
-    server.get('/categories/:categories', (req, res) => {
+    server.get('/categories/:category', (req, res) => {
       return app.render(req, res, '/', { ...req.params })
     })
 
