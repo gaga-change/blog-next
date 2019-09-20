@@ -1,0 +1,44 @@
+.LayoutHeaderComponent {
+  // line-height: 64px;
+  height: inherit;
+
+  .container {
+    display: flex;
+    height: inherit;
+
+    .left-area {
+      width: 200px;
+      height: inherit;
+
+      a {
+        display: flex;
+        align-items: center;
+        height: inherit;
+        text-decoration: none;
+
+        h3 {
+          margin: 0;
+
+          .title-des {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .right-area {
+      position: relative;
+      flex: 1;
+      height: inherit;
+
+      .ant-menu {
+        position: absolute;
+        width: 100%;
+        text-align: right;
+        margin-bottom: -1px;
+        bottom: 0;
+      }
+    }
+  }
+
+}
