@@ -5,8 +5,9 @@ const withLess = require('@zeit/next-less')
 if (typeof require !== 'undefined') {
   require.extensions['.less'] = (file) => { }
 }
-
+const isProd = process.env.NODE_ENV === 'production'
 module.exports = withLess({
+  assetPrefix: isProd ? '//cdn.junn.top' : '',
   lessLoaderOptions: {
     javascriptEnabled: true,
   },
