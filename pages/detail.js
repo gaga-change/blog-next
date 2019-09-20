@@ -19,7 +19,7 @@ class Detail extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.detail)
+    // console.log(this.props.detail)
   }
 
   render() {
