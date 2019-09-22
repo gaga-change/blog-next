@@ -14,6 +14,7 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <script src="//cdn.yanjd.top/yanjd/js/baidu.js"></script>
         </body>
       </html>
     )
