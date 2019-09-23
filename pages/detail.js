@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Head from 'next/head'
 import Base from '../components/BaseLayout'
 import { post, terms } from '../api'
 import { setMenu } from '../store'
@@ -26,6 +27,9 @@ class Detail extends React.Component {
     const { detail } = this.props
     return (
       <Base><div className="page-detail">
+        <Head>
+          <title>{detail.title} &#8211; 严俊东个人博客</title>
+        </Head>
         <div>
           <h1 className="title">{detail.title}</h1>
           <div className="md-style" dangerouslySetInnerHTML={{ __html: detail.content }}></div>

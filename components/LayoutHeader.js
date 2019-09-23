@@ -20,12 +20,12 @@ class LayoutHeader extends React.Component {
             <Menu mode="horizontal">
               <Menu.Item key="home">
                 <Link href="/">
-                  首页
+                  <a>首页</a>
                 </Link>
               </Menu.Item>
               <Menu.Item key="about">
                 <Link href="/about">
-                  关于我
+                  <a>关于我</a>
                 </Link>
               </Menu.Item>
             </Menu>

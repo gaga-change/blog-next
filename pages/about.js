@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Head from 'next/head'
 import Base from '../components/BaseLayout'
 import { terms } from '../api'
 import { setMenu } from '../store'
@@ -21,6 +22,9 @@ class Detail extends React.Component {
   render() {
     return (
       <Base><div className="page-detail">
+        <Head>
+          <title>关于我</title>
+        </Head>
         <div>
           <h1 className="title">关于我</h1>
           <div className="md-style">
