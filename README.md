@@ -34,9 +34,9 @@ npm run start
 
 ### 环境变量
 
-`BLOG_API_URL` 提供api的服务url
-`QINIU_ACCESS_KEY` 七牛云 accessKey
-`QINIU_SECRET_KEY` 七牛云 secretKey
+* `BLOG_API_URL` 提供api的服务url
+* `QINIU_ACCESS_KEY` 七牛云 accessKey
+* `QINIU_SECRET_KEY` 七牛云 secretKey
 
 
 ### 备注
