@@ -7,7 +7,7 @@ if (typeof require !== 'undefined') {
 }
 const isProd = process.env.NODE_ENV === 'production'
 module.exports = withLess({
-  assetPrefix: isProd ? '//cdn.junn.top' : '',
+  assetPrefix: isProd ? '//cdn.yanjd.top/blog' : '',
   lessLoaderOptions: {
     javascriptEnabled: true,
   },
