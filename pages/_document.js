@@ -14,6 +14,8 @@ export default class MyDocument extends Document {
           <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet"></link>
         </Head>
         <body>
+          <a href="https://github.com/gaga-change/blog-next" target="blank"><img style={{ position: 'absolute', top: 0, right: 0, border: 0 }}
+            src="https://github.blog/wp-content/uploads/2008/12/forkme_right_white_ffffff.png?resize=149%2C149" alt="Fork me on GitHub" /></a>
           <Main />
           <NextScript />
           <script src="//cdn.yanjd.top/blog/js/baidu.js"></script>

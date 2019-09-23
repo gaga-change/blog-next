@@ -1,4 +1,4 @@
-# next.js 博客站点
+# Next.js 博客站点
 
 前台使用 Next.js + antd。
 
