@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { apiUrl } from '../config'
 
-const host = process.env.BLOG_API_URL || 'https://www.yanjd.top'
+const host = apiUrl
 
 /** 解析。服务端需要全路径， */
 const _ = (isServer, path) => {
