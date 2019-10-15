@@ -22,7 +22,7 @@ class LayoutRight extends React.Component {
     return (
       <Affix>
         <Card
-          title={(<span>  <Icon type="folder" />分类 </span>)}
+          title={(<span>  <Icon type="folder" /><span className="ml5">分类</span> </span>)}
         >
           {categories.map(category => (
             <div key={category._id}>
@@ -35,7 +35,7 @@ class LayoutRight extends React.Component {
         <div style={{ marginTop: 16 }}>
           <Card
             size="small"
-            title={(<span>  <Icon type="tag" />标签 </span>)}
+            title={(<span>  <Icon type="tag" /><span className="ml5">标签</span> </span>)}
           >
             {tags.map(tag => (
               <span key={tag._id} className="tags">
@@ -49,11 +49,11 @@ class LayoutRight extends React.Component {
         <div style={{ marginTop: 16 }}>
           <Card
             size="small"
-            title={(<span>  <Icon type="file" />最新文章 </span>)}
+            title={(<span>  <Icon type="file" /><span className="ml5">最新文章</span> </span>)}
           >
-            {posts.map(post => (
-              <div key={post._id}>
-                <Link href={`/detail?id=${post._id}`} as={`/archives/${post._id}`}><a>{post.title}</a></Link>
+            {posts.map((post, i) => (
+              <div className={!!i ? 'mt5' : ''} key={post._id}>
+                <Link href={`/detail?id=${post._id}`} as={`/archives/${post._id}`}><a className="text-ellipsis" title={post.title}>{post.title}</a></Link>
               </div>
             ))}
           </Card>

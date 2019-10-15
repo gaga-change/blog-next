@@ -1,0 +1,88 @@
+.c-333 {
+  color: #333;
+}
+
+.c-666 {
+  color: #666;
+}
+
+.c-ccc {
+  color: #ccc;
+}
+
+.c-red {
+  color: #f56c6c;
+}
+
+// 字体大小。f12 ~ f32
+@fontSizeList: range(12, 32, 2);
+
+each(@fontSizeList, {
+    .f@{value} {
+      font-size: (@value + 0px);
+    }
+  }
+
+);
+
+
+// 字重。如: fw600
+@fontWeightList: range(400, 700, 100);
+
+each(@fontWeightList, {
+    .fw@{value} {
+      font-weight: @value;
+    }
+  }
+
+);
+
+// margin。如: mt20（margin-top:20px;）、ml15(margin-left:15)
+@dirList: l r t b;
+@dirNameList: left right top bottom;
+
+@dirSizeList: range(5, 35, 5);
+
+each(@dirSizeList, .(@v, @i) {
+    @num: @v;
+
+    each(@dirList, {
+        @dir: @value;
+        @dirName: extract(@dirNameList, @index);
+
+        .m@{dir}@{num} {
+          margin-@{dirName}: (5px * @i);
+        }
+      }
+
+    )
+  }
+
+);
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.clearfix {
+  &::after {
+    content: "";
+    clear: both;
+  }
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.text-ellipsis {
+  display: inline-block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
