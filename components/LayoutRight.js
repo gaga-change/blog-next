@@ -25,9 +25,9 @@ class LayoutRight extends React.Component {
           title={(<span>  <Icon type="folder" />分类 </span>)}
         >
           {categories.map(category => (
-            <div key={category}>
-              <Link href={`/?category=${category}`} as={`/categories/${category}`}>
-                <a className={query.category === category ? 'active' : ''}>{category}</a>
+            <div key={category._id}>
+              <Link href={`/?category=${category._id}`} as={`/categories/${category._id}`}>
+                <a className={query.category === category._id ? 'active' : ''}>{category.name}</a>
               </Link>
             </div>
           ))}
@@ -38,9 +38,9 @@ class LayoutRight extends React.Component {
             title={(<span>  <Icon type="tag" />标签 </span>)}
           >
             {tags.map(tag => (
-              <span key={tag} className="tags">
-                <Link href={`/?tag=${tag}`} as={`/tags/${tag}`}>
-                  <a className={query.tag === tag ? 'active' : ''}>{tag}</a>
+              <span key={tag._id} className="tags">
+                <Link href={`/?tag=${tag._id}`} as={`/tags/${tag._id}`}>
+                  <a className={query.tag === tag._id ? 'active' : ''}>{tag.name}</a>
                 </Link>
               </span>
             ))}
@@ -52,8 +52,8 @@ class LayoutRight extends React.Component {
             title={(<span>  <Icon type="file" />最新文章 </span>)}
           >
             {posts.map(post => (
-              <div key={post.id}>
-                <Link href={`/detail?id=${post.id}`} as={`/archives/${post.id}`}><a>{post.title}</a></Link>
+              <div key={post._id}>
+                <Link href={`/detail?id=${post._id}`} as={`/archives/${post._id}`}><a>{post.title}</a></Link>
               </div>
             ))}
           </Card>

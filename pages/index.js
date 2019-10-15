@@ -43,18 +43,18 @@ class Index extends React.Component {
     let isServer = !!req
     let { page, tag, category } = query
     page = Number(page) || 1
-    let res = await posts(isServer, { page, pageSize: DEFAULT_PAGE_SIZE, tag, category })
-    let postsData = res.data.data
+    let res = await posts(isServer, { pageNum: page, pageSize: DEFAULT_PAGE_SIZE, tags: tag, category })
+    let postsData = res.data
     if (!reduxStore.getState().menu) {
-      let { data } = await terms(isServer)
-      reduxStore.dispatch(setMenu(data.data))
+      let data = await terms(isServer)
+      reduxStore.dispatch(setMenu(data))
     }
     return {
       pageSize: DEFAULT_PAGE_SIZE, // 每页条数
-      count: postsData.count, // 总条数
+      count: postsData.total, // 总条数
       data: postsData.list, // post列表
-      page: postsData.page, // 当前页面
-      pages: postsData.pages, // 总页数
+      page: page, // 当前页面
+      pages: DEFAULT_PAGE_SIZE, // 总页数
       asPath,
       pathname,
       query,
@@ -95,10 +95,10 @@ class Index extends React.Component {
               key={item.title}
               actions={[<IconText type="read" text="0" />, <IconText type="like-o" text="0" />, <IconText type="message" text="0" />,
               <span className="item-tags"><Icon type="tags" />{(<span>{item.tags.map((tag, index) => (
-                <span key={tag}>
+                <span key={tag._id}>
                   {!!index && '/'}
-                  <Link href={`/?tag=${tag}`} as={`/tags/${tag}`}>
-                    <a className={props.query.tag === tag ? 'active' : ''}>{tag}</a>
+                  <Link href={`/?tag=${tag.name}`} as={`/tags/${tag._id}`}>
+                    <a className={props.query.tag === tag._id ? 'active' : ''}>{tag.name}</a>
                   </Link>
                 </span>
               ))}</span>)}</span>
@@ -106,7 +106,7 @@ class Index extends React.Component {
               extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
             >
               <List.Item.Meta
-                title={(<Link href={`/detail?id=${item.id}`} as={`/archives/${item.id}`}><a>{item.title}</a></Link>)}
+                title={(<Link href={`/detail?id=${item._id}`} as={`/archives/${item._id}`}><a>{item.title}</a></Link>)}
                 description={item.intro + '...'}
               />
             </List.Item>

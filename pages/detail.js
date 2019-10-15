@@ -11,11 +11,11 @@ class Detail extends React.Component {
     let { id } = query
     let res = await post(isServer, id)
     if (!reduxStore.getState().menu) {
-      let { data } = await terms(isServer)
-      reduxStore.dispatch(setMenu(data.data))
+      let data = await terms(isServer)
+      reduxStore.dispatch(setMenu(data))
     }
     return {
-      detail: res.data.data
+      detail: res.data
     }
   }
 
