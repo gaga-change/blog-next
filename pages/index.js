@@ -93,7 +93,9 @@ class Index extends React.Component {
           renderItem={item => (
             <List.Item
               key={item.title}
-              actions={[<IconText type="read" text="0" />, <IconText type="like-o" text="0" />, <IconText type="message" text="0" />,
+              actions={[<IconText type="read" text={item.readTime} />,
+              // <IconText type="like-o" text="0" />,
+              // <IconText type="message" text="0" />,
               <span className="item-tags"><Icon type="tags" />{(<span>{item.tags.map((tag, index) => (
                 <span key={tag._id}>
                   {!!index && '/'}
@@ -103,7 +105,7 @@ class Index extends React.Component {
                 </span>
               ))}</span>)}</span>
               ]}
-              extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
+              extra={!!item.logos[0] && <img width={272} alt="logo" src={item.logos[0].url + '?imageView2/1/w/272/h/168/format/jpg/q/100'} />}
             >
               <List.Item.Meta
                 title={(<Link href={`/detail?id=${item._id}`} as={`/archives/${item._id}`}><a>{item.title}</a></Link>)}

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Head from 'next/head'
 import Base from '../components/BaseLayout'
-import { post, terms } from '../api'
+import { post, terms, autoAddReadTime } from '../api'
 import { setMenu } from '../store'
 
 class Detail extends React.Component {
@@ -20,7 +20,7 @@ class Detail extends React.Component {
   }
 
   componentDidMount() {
-    // console.log(this.props.detail)
+    autoAddReadTime(this.props.detail._id)
   }
 
   render() {

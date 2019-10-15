@@ -30,3 +30,5 @@ export const terms = (isServer) => Promise.all([
 })
 // 文章详情
 export const post = (isServer, id) => axios.get(_(isServer, `/posts/${id}`))
+// 增加点击量
+export const autoAddReadTime = id => axios.put(`/api/posts/${id}/autoAddReadTime`)
