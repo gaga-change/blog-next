@@ -1,17 +1,17 @@
+import Base from '../components/BaseLayout'
+import Head from 'next/head'
 import React from 'react'
 import { connect } from 'react-redux'
-import Head from 'next/head'
-import Base from '../components/BaseLayout'
-import { terms } from '../api'
 import { setMenu } from '../store'
+import { terms } from '../api'
 
 class Detail extends React.Component {
 
   static async getInitialProps({ req, query, reduxStore }) {
     let isServer = !!req
     if (!reduxStore.getState().menu) {
-      let { data } = await terms(isServer)
-      reduxStore.dispatch(setMenu(data.data))
+      let data = await terms(isServer)
+      reduxStore.dispatch(setMenu(data))
     }
     return {}
   }
