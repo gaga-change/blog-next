@@ -1,12 +1,13 @@
-import React from 'react'
-import { List, Icon } from 'antd'
-import { withRouter } from 'next/router'
-import { connect } from 'react-redux'
+import { Icon, List } from 'antd'
+import { posts, terms } from '../api'
+
+import Base from '../components/BaseLayout'
 import Head from 'next/head'
 import Link from 'next/link'
+import React from 'react'
+import { connect } from 'react-redux'
 import { setMenu } from '../store'
-import Base from '../components/BaseLayout'
-import { posts, terms } from '../api'
+import { withRouter } from 'next/router'
 
 const IconText = ({ type, text }) => (
   <span>
@@ -43,10 +44,12 @@ class Index extends React.Component {
     let isServer = !!req
     let { page, tag, category } = query
     page = Number(page) || 1
-    let res = await posts(isServer, { pageNum: page, pageSize: DEFAULT_PAGE_SIZE, tags: tag, category })
+    let res = posts(isServer, { pageNum: page, pageSize: DEFAULT_PAGE_SIZE, tags: tag, category })
+    res = await res
     let postsData = res.data
     if (!reduxStore.getState().menu) {
-      let data = await terms(isServer)
+      let data = terms(isServer)
+      data = await data
       reduxStore.dispatch(setMenu(data))
     }
     return {
@@ -59,10 +62,6 @@ class Index extends React.Component {
       pathname,
       query,
     }
-  }
-
-  componentDidMount() {
-    // console.log(this.props)
   }
 
   render() {

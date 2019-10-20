@@ -1,7 +1,7 @@
-import React from 'react'
-import { Typography, Menu, Icon } from 'antd'
+import { Menu, Typography } from 'antd'
 
 import Link from 'next/link'
+import React from 'react'
 
 const { Text, Title } = Typography
 class LayoutHeader extends React.Component {
@@ -21,6 +21,11 @@ class LayoutHeader extends React.Component {
               <Menu.Item key="home">
                 <Link href="/">
                   <a>首页</a>
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="archives">
+                <Link href="/archives">
+                  <a>归档</a>
                 </Link>
               </Menu.Item>
               <Menu.Item key="about">

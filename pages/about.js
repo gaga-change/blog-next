@@ -23,7 +23,7 @@ class Detail extends React.Component {
     return (
       <Base><div className="page-detail">
         <Head>
-          <title>关于我</title>
+          <title>关于我 &#8211; 严俊东个人博客</title>
         </Head>
         <div>
           <h1 className="title">关于我</h1>
@@ -38,20 +38,20 @@ class Detail extends React.Component {
   学无止境，成功留给有准备的人！
             </p>
             <p>
-              <i class="fa fa-user"></i>
+              <i className="fa fa-user"></i>
               微信:<a href="//www.yanjd.top">gaga_change</a>
             </p>
             <p>
-              <i class="fa fa-user"></i>
+              <i className="fa fa-user"></i>
               QQ:<a href="//www.yanjd.top">1172482914</a>
             </p>
             <p>
-              <i class="fa fa-envelope"></i>
+              <i className="fa fa-envelope"></i>
               邮箱:<a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=q8zKzMr0yMPKxczO69rahcjExg"
-                style={{ 'text-decoration': 'none' }}>gaga_change@qq.com</a>
+                style={{ 'textDecoration': 'none' }}>gaga_change@qq.com</a>
             </p>
             <p>
-              <i class="fa fa-github"></i>
+              <i className="fa fa-github"></i>
               GitHub:<a href="https://github.com/gaga-change" target="_blank" rel="noopener">@gaga-change</a>
             </p>
           </div>

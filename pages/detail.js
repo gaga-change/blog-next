@@ -1,17 +1,20 @@
+import { autoAddReadTime, post, terms } from '../api'
+
+import Base from '../components/BaseLayout'
+import Head from 'next/head'
 import React from 'react'
 import { connect } from 'react-redux'
-import Head from 'next/head'
-import Base from '../components/BaseLayout'
-import { post, terms, autoAddReadTime } from '../api'
 import { setMenu } from '../store'
 
 class Detail extends React.Component {
   static async getInitialProps({ req, query, reduxStore }) {
     let isServer = !!req
     let { id } = query
-    let res = await post(isServer, id)
+    let res = post(isServer, id)
+    res = await res
     if (!reduxStore.getState().menu) {
-      let data = await terms(isServer)
+      let data = terms(isServer)
+      data = await data
       reduxStore.dispatch(setMenu(data))
     }
     return {
