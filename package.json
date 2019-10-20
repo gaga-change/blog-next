@@ -9,7 +9,7 @@
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-less": "^1.0.1",
-    "antd": "^3.9.2",
+    "antd": "^3.24.2",
     "axios": "^0.18.0",
     "babel-plugin-import": "^1.9.1",
     "cross-env": "^5.2.0",
