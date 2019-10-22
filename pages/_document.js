@@ -1,14 +1,17 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 
-export default class MyDocument extends Document {
+const description = process.env.WBE_SET_DESCRIPTION
+const keywords = process.env.WBE_SET_KEYWORDS
+const appendJsFileUrl = process.env.WEB_SET_APPEND_JS_FILE_URL
+class MyDocument extends Document {
   render() {
     return (
       <html lang="zh">
         <Head>
           <meta name='viewport' content='width=device-width, initial-scale=1' />
           <meta charSet='utf-8' />
-          <meta name="description" content="严俊东的个人博客。技术包括但不限于JavaScript、NodeJS、CSS3、HTML以及各类编程开发等相关内容。邮箱gaga_change@qq.com，微信号gaga_change。" />
-          <meta name="keywords" content="严俊东,严俊东个人博客,严俊东博客,个人博客,Next.js个人博客" />
+          <meta name="description" content={description} />
+          <meta name="keywords" content={keywords} />
           <link rel="shortcut icon" href="/static/favicon.ico" />
           <link rel="stylesheet" href="//cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap-grid.min.css" />
           <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet"></link>
@@ -18,9 +21,11 @@ export default class MyDocument extends Document {
             src="https://github.blog/wp-content/uploads/2008/12/forkme_right_white_ffffff.png?resize=149%2C149" alt="Fork me on GitHub" /></a>
           <Main />
           <NextScript />
-          <script src="//cdn.yanjd.top/blog/js/baidu.js"></script>
+          {appendJsFileUrl && <script src={appendJsFileUrl}></script>}
         </body>
       </html>
     )
   }
 }
+
+export default MyDocument
