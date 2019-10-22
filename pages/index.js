@@ -54,15 +54,15 @@ class Index extends React.Component {
     }
     let { webSet } = reduxStore.getState().menu
     let { header } = webSet
-    let title = `${header}- ${page === 1 ? '首页' : `第${page}页`}`
+    let title = `${header} - ${page === 1 ? '首页' : `第${page}页`}`
     {
       const { tags, categories } = reduxStore.getState().menu
       if (tag) {
         let item = tags.find(v => v._id === tag)
-        title = `${item.name} - 标签 - ${header}${page === 1 ? '' : `- 第${page}页`}`
+        title = `${item.name} - 标签 - ${header}${page === 1 ? '' : ` - 第${page}页`}`
       } else if (category) {
         let item = categories.find(v => v._id === category)
-        title = `${item.name} - 分类 - ${header}${page === 1 ? '' : `- 第${page}页`}`
+        title = `${item.name} - 分类 - ${header}${page === 1 ? '' : ` - 第${page}页`}`
       }
     }
     return {
