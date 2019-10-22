@@ -52,6 +52,17 @@ class Index extends React.Component {
       data = await data
       reduxStore.dispatch(setMenu(data))
     }
+    let title = `严俊东个人博客 - ${page === 1 ? '首页' : `第${page}页`}`
+    {
+      const { tags, categories } = reduxStore.getState().menu
+      if (tag) {
+        let item = tags.find(v => v._id === tag)
+        title = `${item.name} - 标签 - 严俊东个人博客${page === 1 ? '' : `- 第${page}页`}`
+      } else if (category) {
+        let item = categories.find(v => v._id === category)
+        title = `${item.name} - 分类 - 严俊东个人博客${page === 1 ? '' : `- 第${page}页`}`
+      }
+    }
     return {
       pageSize: DEFAULT_PAGE_SIZE, // 每页条数
       count: postsData.total, // 总条数
@@ -61,6 +72,7 @@ class Index extends React.Component {
       asPath,
       pathname,
       query,
+      title
     }
   }
 
@@ -69,7 +81,7 @@ class Index extends React.Component {
     return (
       <Base><div className="page-index">
         <Head>
-          <title>严俊东 &#8211; 严俊东个人博客</title>
+          <title>{props.title}</title>
         </Head>
         <List
           className="list"
@@ -98,7 +110,7 @@ class Index extends React.Component {
               <span className="item-tags"><Icon type="tags" />{(<span>{item.tags.map((tag, index) => (
                 <span key={tag._id}>
                   {!!index && '/'}
-                  <Link href={`/?tag=${tag.name}`} as={`/tags/${tag._id}`}>
+                  <Link href={`/? tag = ${tag.name} `} as={` / tags / ${tag._id} `}>
                     <a className={props.query.tag === tag._id ? 'active' : ''}>{tag.name}</a>
                   </Link>
                 </span>
@@ -107,7 +119,7 @@ class Index extends React.Component {
               extra={!!item.logos[0] && <img width={272} alt="logo" src={item.logos[0].url + '?imageView2/1/w/272/h/168/format/jpg/q/100'} />}
             >
               <List.Item.Meta
-                title={(<Link href={`/detail?id=${item._id}`} as={`/archives/${item._id}`}><a>{item.title}</a></Link>)}
+                title={(<Link href={`/ detail ? id = ${item._id} `} as={` / archives / ${item._id} `}><a>{item.title}</a></Link>)}
                 description={item.intro + '...'}
               />
             </List.Item>

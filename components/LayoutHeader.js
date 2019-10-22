@@ -12,7 +12,7 @@ class LayoutHeader extends React.Component {
           <div className="left-area">
             <Link href="/">
               <a>
-                <Title level={3}>严俊东<Text type="secondary" className="title-des"> &#8211; 严俊东个人博客</Text></Title>
+                <Title level={3}>严俊东博客<Text type="secondary" className="title-des"> &#8211; 分享技术的小站</Text></Title>
               </a>
             </Link>
           </div>
