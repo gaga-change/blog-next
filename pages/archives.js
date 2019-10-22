@@ -28,7 +28,8 @@ class Detail extends React.Component {
     });
     return {
       archives,
-      list: res.data.list
+      list: res.data.list,
+      webSet: reduxStore.getState().menu.webSet
     }
   }
 
@@ -38,11 +39,11 @@ class Detail extends React.Component {
   }
 
   render() {
-    const { list } = this.props
+    const { list, webSet } = this.props
     return (
       <Base><div className="page-detail">
         <Head>
-          <title>归档 &#8211; 严俊东个人博客</title>
+          <title>归档 - {webSet.header}</title>
         </Head>
         <div className="mt20">
           <Timeline mode="alternate">

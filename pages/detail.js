@@ -18,7 +18,8 @@ class Detail extends React.Component {
       reduxStore.dispatch(setMenu(data))
     }
     return {
-      detail: res.data
+      detail: res.data,
+      webSet: reduxStore.getState().menu.webSet
     }
   }
 
@@ -27,11 +28,11 @@ class Detail extends React.Component {
   }
 
   render() {
-    const { detail } = this.props
+    const { detail, webSet } = this.props
     return (
       <Base><div className="page-detail">
         <Head>
-          <title>{detail.title} &#8211; 严俊东个人博客</title>
+          <title>{detail.title} - {webSet.header}</title>
         </Head>
         <div>
           <h1 className="title">{detail.title}</h1>

@@ -110,7 +110,7 @@ class Index extends React.Component {
               <span className="item-tags"><Icon type="tags" />{(<span>{item.tags.map((tag, index) => (
                 <span key={tag._id}>
                   {!!index && '/'}
-                  <Link href={`/? tag = ${tag.name} `} as={` / tags / ${tag._id} `}>
+                  <Link href={`/?tag=${tag.name}`} as={`/tags/${tag._id} `}>
                     <a className={props.query.tag === tag._id ? 'active' : ''}>{tag.name}</a>
                   </Link>
                 </span>
@@ -119,7 +119,7 @@ class Index extends React.Component {
               extra={!!item.logos[0] && <img width={272} alt="logo" src={item.logos[0].url + '?imageView2/1/w/272/h/168/format/jpg/q/100'} />}
             >
               <List.Item.Meta
-                title={(<Link href={`/ detail ? id = ${item._id} `} as={` / archives / ${item._id} `}><a>{item.title}</a></Link>)}
+                title={(<Link href={`/detail?id=${item._id}`} as={`/archives/${item._id}`}><a>{item.title}</a></Link>)}
                 description={item.intro + '...'}
               />
             </List.Item>

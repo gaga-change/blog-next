@@ -13,17 +13,21 @@ class Detail extends React.Component {
       let data = await terms(isServer)
       reduxStore.dispatch(setMenu(data))
     }
-    return {}
+    return {
+      webSet: reduxStore.getState().menu.webSet
+    }
   }
 
   componentDidMount() {
   }
 
   render() {
+    const { webSet } = this.props
+
     return (
       <Base><div className="page-detail">
         <Head>
-          <title>关于我 &#8211; 严俊东个人博客</title>
+          <title>关于我 - {webSet.header}</title>
         </Head>
         <div>
           <h1 className="title">关于我</h1>
