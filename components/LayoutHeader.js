@@ -1,18 +1,20 @@
 import { Menu, Typography } from 'antd'
-
+import { connect } from 'react-redux'
 import Link from 'next/link'
 import React from 'react'
 
 const { Text, Title } = Typography
 class LayoutHeader extends React.Component {
   render() {
+    const { webSet = {} } = this.props.menu
+    const { header = '', subhead = '' } = webSet
     return (
       <div className="LayoutHeaderComponent">
         <div className="container">
           <div className="left-area">
             <Link href="/">
               <a>
-                <Title level={3}>严俊东博客<Text type="secondary" className="title-des"> &#8211; 分享技术的小站</Text></Title>
+                <Title level={3}>{header}<Text type="secondary" className="title-des"> &#8211; {subhead}</Text></Title>
               </a>
             </Link>
           </div>
@@ -41,4 +43,4 @@ class LayoutHeader extends React.Component {
   }
 }
 
-export default LayoutHeader
+export default connect((state) => ({ menu: state.menu || {} }))(LayoutHeader)
