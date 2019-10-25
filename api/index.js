@@ -22,12 +22,14 @@ export const terms = (isServer) => Promise.all([
   axios.get(_(isServer, '/categories'), { params: { pageSize: 999 } }),
   axios.get(_(isServer, '/posts'), { params: { pageSize: 5 } }),
   axios.get(_(isServer, '/webSets'), { params: { pageSize: 1 } }),
+  axios.get(_(isServer, '/pageMenus?show=true&select=name path'), { params: { pageSize: 999, show: true, select: 'name path -_id' } }),
 ]).then(resArr => {
   return {
     tags: resArr[0].data.list,
     categories: resArr[1].data.list,
     posts: resArr[2].data.list,
-    webSet: resArr[3].data.list[0] || {}
+    webSet: resArr[3].data.list[0] || {},
+    pageMenus: resArr[4].data.list,
   }
 })
 // 文章详情

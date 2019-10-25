@@ -6,7 +6,7 @@ import React from 'react'
 const { Text, Title } = Typography
 class LayoutHeader extends React.Component {
   render() {
-    const { webSet = {} } = this.props.menu
+    const { webSet = {}, pageMenus = [] } = this.props.menu
     const { header = '', subhead = '' } = webSet
     return (
       <div className="LayoutHeaderComponent">
@@ -20,21 +20,11 @@ class LayoutHeader extends React.Component {
           </div>
           <div className="right-area">
             <Menu mode="horizontal">
-              <Menu.Item key="home">
-                <Link href="/">
-                  <a>首页</a>
+              {pageMenus.map((item, i) => <Menu.Item key={i}>
+                <Link href={item.path}>
+                  <a>{item.name}</a>
                 </Link>
-              </Menu.Item>
-              <Menu.Item key="archives">
-                <Link href="/archives">
-                  <a>归档</a>
-                </Link>
-              </Menu.Item>
-              <Menu.Item key="about">
-                <Link href="/about">
-                  <a>关于我</a>
-                </Link>
-              </Menu.Item>
+              </Menu.Item>)}
             </Menu>
           </div>
         </div>

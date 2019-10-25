@@ -50,8 +50,8 @@ class Detail extends React.Component {
             {
               list.map(post => {
                 let releaseDate = this.turnDate(post.releaseDate)
-                return <Timeline.Item key={post._id}>
-                  <Link href={`/detail?id=${post._id}`} as={`/archives/${post._id}`}><a title={`${post.title} ${releaseDate}`}>
+                return <Timeline.Item color="#e8e8e8" key={post._id}>
+                  <Link href={`/detail?id=${post._id}`} as={`/archives/${post._id}`}><a className="c-333" title={`${post.title} ${releaseDate}`}>
                     <span className="text-ellipsis" >{post.title} {releaseDate}</span>
                   </a></Link>
                 </Timeline.Item>
