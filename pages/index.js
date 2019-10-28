@@ -122,7 +122,7 @@ class Index extends React.Component {
             >
               <List.Item.Meta
                 title={(<Link href={`/detail?id=${item._id}`} as={`/archives/${item._id}`}><a>{item.title}</a></Link>)}
-                description={item.intro + '...'}
+                description={item.intro ? item.intro + '...' : undefined}
               />
             </List.Item>
           )}
