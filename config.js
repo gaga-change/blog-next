@@ -1,10 +1,3 @@
-let apiUrl = process.env.BLOG_API_URL || 'https://www.yanjd.top'
-
-try {
-  const config = require('./config_default')
-  apiUrl = config.apiUrl
-} catch (error) {
-
-}
+let apiUrl = process.env.BLOG_API_URL || 'https://www.junn.top'
 
 exports.apiUrl = apiUrl
