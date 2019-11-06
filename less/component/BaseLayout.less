@@ -17,22 +17,38 @@
       box-sizing: content-box;
       border-bottom: 1px solid #e8e8e8;
       background: url('/static/header_bg.jpg') center top repeat-x;
+      padding: 0;
+
+      @media (min-width: 576px) {
+        padding: 0 50px;
+      }
     }
 
     // 列表区域 & 侧边
     &>.layout-con {
+
       background: inherit;
       margin-top: 20px;
+      flex-wrap: wrap;
+      flex-direction: row;
 
-      // &>.content {
-
-      // }
+      @media (min-width: 576px) {
+        flex-wrap: nowrap;
+      }
 
       &>.sider {
-        width: 240px !important;
-        min-width: 240px !important;
-        max-width: 240px !important;
-        padding: 16px 0 0 20px;
+
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        padding: 20px 0 0 0;
+
+        @media (min-width: 576px) {
+          width: 240px !important;
+          min-width: 240px !important;
+          max-width: 240px !important;
+          padding: 16px 0 0 20px;
+        }
 
         span.tags {
           margin: 5px 5px;
