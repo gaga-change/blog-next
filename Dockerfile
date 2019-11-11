@@ -1,13 +1,12 @@
 FROM node:10.13-alpine
 #ENV NODE_ENV production
+ARG QINIU_ACCESS_KEY=
+ARG QINIU_SECRET_KEY=
 WORKDIR /usr/src/app
 COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
-COPY run.sh /usr/local/bin/
-RUN chmod 777 /usr/local/bin/run.sh \
-  && ln -s /usr/local/bin/run.sh /
-# RUN npm --registry https://registry.npm.taobao.org install
 RUN npm install
 COPY . .
 RUN npm run build
+RUN node ./cdn.js
 EXPOSE 3000
-CMD ["run.sh"]
+CMD npm run server
