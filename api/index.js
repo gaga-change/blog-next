@@ -20,7 +20,7 @@ export const posts = (isServer, params) => axios.get(_(isServer, '/posts'), { pa
 export const terms = (isServer) => Promise.all([
   axios.get(_(isServer, '/tags'), { params: { pageSize: 999 } }),
   axios.get(_(isServer, '/categories'), { params: { pageSize: 999 } }),
-  axios.get(_(isServer, '/posts'), { params: { pageSize: 5 } }),
+  axios.get(_(isServer, '/posts'), { params: { pageSize: 5, show: true } }),
   axios.get(_(isServer, '/webSets'), { params: { pageSize: 1 } }),
   axios.get(_(isServer, '/pageMenus?show=true&select=name path'), { params: { pageSize: 999, show: true, select: 'name path -_id' } }),
 ]).then(resArr => {

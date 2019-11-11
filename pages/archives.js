@@ -17,7 +17,7 @@ class Detail extends React.Component {
       let data = await p
       reduxStore.dispatch(setMenu(data))
     }
-    let res = posts(isServer, { pageSize: 9999, select: 'id title releaseDate -logos -tags -category' })
+    let res = posts(isServer, { pageSize: 9999, show: true, select: 'id title releaseDate -logos -tags -category' })
     res = await res
 
     const archives = {};

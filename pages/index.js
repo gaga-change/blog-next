@@ -44,7 +44,7 @@ class Index extends React.Component {
     let isServer = !!req
     let { page, tag, category } = query
     page = Number(page) || 1
-    let res = posts(isServer, { pageNum: page, pageSize: DEFAULT_PAGE_SIZE, tags: tag, category })
+    let res = posts(isServer, { pageNum: page, pageSize: DEFAULT_PAGE_SIZE, tags: tag, category, show: true })
     res = await res
     let postsData = res.data
     if (!reduxStore.getState().menu) {
