@@ -6,7 +6,6 @@
 
 API 使用 EGG.js + mongodb。项目地址：[gaga-change](https://github.com/gaga-change/gaga-change)
 
-[点此进入首页](https://www.yanjd.top)
 
 效果图：
 
