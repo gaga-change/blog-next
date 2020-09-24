@@ -4,7 +4,7 @@
 
 后台管理使用 Vue + ElementUI。项目地址：[blog-admin](https://github.com/gaga-change/blog-admin)
 
-API 使用 EGG.js + mongodb。项目地址：[gaga-change](https://github.com/gaga-change/gaga-change)
+API 使用 EGG.js + mongodb。项目地址：[blog-egg](https://github.com/gaga-change/blog-egg)
 
 
 效果图：
